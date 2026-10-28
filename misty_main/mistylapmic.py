@@ -15,7 +15,7 @@ def listen_command_with_wake_word():
 
     while True:
         try:
-            with sr.Microphone(device_index=1) as source:
+            with sr.Microphone(device_index=2) as source:
                 print("🎧 Listening...")
                 engine.say("Listening.")
                 engine.runAndWait()
@@ -25,8 +25,13 @@ def listen_command_with_wake_word():
                 audio = recognizer.listen(source)
 
             print("⌛ Recognizing...")
-            text = recognizer.recognize_google(audio)
+            engine.say("Recognizing.")
+            engine.runAndWait()
+            
+            text = recognizer.recognize_whisper(audio, model="base")
             print(text)
+            engine.say(text)
+            engine.runAndWait()
 
             
             

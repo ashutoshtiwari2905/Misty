@@ -243,7 +243,7 @@ def askgroqapi(api_key, text):
 
     try:
         response = client.chat.completions.create(
-            model="llama-3.1-8b-instant",  # ✅ WORKING MODEL
+            model="GPT OSS 120B",  # ✅ WORKING MODEL
             messages=[{"role": "user", "content": user_input}]
         )
 
@@ -281,9 +281,5 @@ def mistystopspeak(misty_ip):
         response = requests.post(url)
         print("Misty Stopped Speaking...")
 
-
-
-startnstoplapmain1sec(temp_audio)
-mistystt(temp_audio)
 
 

@@ -27,6 +27,9 @@ angular_velocity = 90
 arm_velocity = 50
 
 
+voice="hi-in-x-hia-local"
+
+
 
 music_name = "ghoomar3.wav"
 
@@ -238,7 +241,7 @@ def response_generation_lap(text):
     with open("llm_response.txt", "r") as file:
         ai_text = file.read()            
 
-    mistyvoicefuncs.mistyspeak(misty_ip, ai_text, voice="hi-IN-SwaraNeural")
+    mistyvoicefuncs.mistyspeak(misty_ip, ai_text, voice="hi-in-x-hia-local")
 
 
 def reset_position():
@@ -273,7 +276,7 @@ def execute_command(text):
         print("Saying...")
     
         if re.search(r"Hello|Hi|Hey|High", text, re.IGNORECASE):
-            mistyvoicefuncs.mistyspeak(misty_ip, hello, voice="hi-IN-SwaraNeural")
+            mistyvoicefuncs.mistyspeak(misty_ip, hello, voice)
 
             for _ in range(5):
                 move_arms(90, -90, arm_velocity)
@@ -283,7 +286,7 @@ def execute_command(text):
         
     elif re.search(r"Introduce", text, re.IGNORECASE):
         print("Introducing...")
-        mistyvoicefuncs.mistyspeak(misty_ip, introduction, voice="hi-IN-SwaraNeural")
+        mistyvoicefuncs.mistyspeak(misty_ip, introduction, voice)
 
         for _ in range(10):
             move_arms(90, -90, arm_velocity)
@@ -730,7 +733,4 @@ def execute_command(text):
 
     else:
         response_generation_lap(text)
-
-
-
 
